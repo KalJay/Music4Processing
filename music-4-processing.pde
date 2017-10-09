@@ -44,3 +44,7 @@ float transform(float t) {
 void setFillToColourScheme(int[] scheme) {
   fill(scheme[0], scheme[1], scheme[2]);
 }
+
+void setFillToColourScheme(int[] scheme, int alpha) {
+  fill(scheme[0], scheme[1], scheme[2], alpha);
+}

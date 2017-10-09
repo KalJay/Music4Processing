@@ -20,10 +20,6 @@ void findSounds() {
   printArray(sounds.array());
 }
 
-String[] getSounds() {
-  return sounds.array();
-}
-
 boolean isSound(String path) {
   if (path.toLowerCase().endsWith(".mp3")) {
     return true;

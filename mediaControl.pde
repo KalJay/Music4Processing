@@ -74,6 +74,7 @@ void displayVolume() {
 }
 
 void handleMouseClick() {
+  //println(mouseX + ", " + mouseY);
   if(!isOptionsOpen) {
     if ((mouseX - width/2) > -30 && (mouseX - width/2) < 30 && (mouseY - height/2) > -30 && (mouseY - height/2) < 30) {
       paused = !paused;
@@ -126,12 +127,18 @@ void handleMouseClick() {
       volume = ((mouseX - width/2)*40)/95;
       jingle.setGain(volume);
     }
-    if (mouseX>= height/70 && mouseY >= height/70 && mouseX <= height/70 + height/20 && mouseY <= height/70 + height/20 ) {
+    if (mouseX>= optionsMargin && mouseY >= optionsMargin && mouseX <= optionsMargin*3.5 && mouseY <= optionsMargin*3.5 ) {
       isOptionsOpen = true;
     }
-  } else {
-    if (mouseX>= height/70 && mouseY >= height/70 && mouseX <= height/70 + height/20 && mouseY <= height/70 + height/20 ) {
+  } else { //options menu is open, previous events are bypassed
+    if (mouseX>= width*0.04 && mouseY >= height*0.04 && mouseX <= width*0.04 + optionsMargin*2 && mouseY <= height*0.04 + optionsMargin*2) {
       isOptionsOpen = false;
+    }
+    if (mouseX >= width*0.1 + width*0.04 && mouseY >= height*0.08 + height*0.1 && mouseX <= height*0.16 + width*0.04 && mouseY <= height*0.08 + width*0.1 + height*0.1) {//width*0.1, height*0.08, height*0.08, height*0.08,
+      toggleShuffle();
+    } //width*0.25, height*0.08, height*0.08, height*0.08
+    if (mouseX >= width*0.25 + width*0.04 && mouseY >= height*0.08 + height*0.1 && mouseX <= height*0.8 + width*0.29 && mouseY <= height*0.08 + width*0.1 + height*0.1) {//width*0.1, height*0.08, height*0.08, height*0.08,
+      toggleRepeat();
     }
   }
 }
