@@ -7,7 +7,7 @@ FFT fftLin;
 
 
 void fftSetup() {
-  minim = new Minim(this);
+    minim = new Minim(this);
 }
 
 float[] fftAnalysis() {
@@ -15,7 +15,7 @@ float[] fftAnalysis() {
   fftLin.forward(jingle.mix);
   for(int i = 0; i < fftLin.avgSize(); i++)
     {
-      list.append(fftLin.getAvg(i)*0.5);
+      list.append(atan(fftLin.getAvg(i)*0.1));
       //println(list.get(i));
     }
     return list.array();
@@ -34,7 +34,7 @@ void fftPlaySong(String song) {
   jingle = minim.loadFile(song, 1024);
   jingle.loop();
   fftLin = new FFT( jingle.bufferSize(), jingle.sampleRate() );
-  fftLin.linAverages( 30 );
+  fftLin.logAverages(22, 3);
   jingle.pause();
   jingle.play();
   jingle.setGain(volume);

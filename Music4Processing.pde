@@ -1,5 +1,3 @@
-
-
 int[] backgroundColour = {255,255,255};
   
 int[] colour1 = {13,77,255};
